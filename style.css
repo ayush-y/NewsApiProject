@@ -1,19 +1,26 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background: linear-gradient(120deg, #f093fb, #f5576c);
     margin: 0;
     padding: 0;
+    color: #333;
 }
 
 .container {
     width: 80%;
     margin: auto;
     overflow: hidden;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
     text-align: center;
     margin-top: 50px;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 form {
@@ -45,4 +52,30 @@ button:hover {
 
 #results {
     margin-top: 20px;
+}
+
+#results div {
+    background: #fff;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#results h2 {
+    margin: 0 0 10px;
+    color: #f5576c;
+}
+
+#results p {
+    margin: 0 0 10px;
+}
+
+#results a {
+    color: #f093fb;
+    text-decoration: none;
+}
+
+#results a:hover {
+    text-decoration: underline;
 }
