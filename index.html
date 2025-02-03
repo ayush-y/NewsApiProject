@@ -9,24 +9,32 @@
         body {
             font-family: Arial, sans-serif;
             background: linear-gradient(120deg, #93effb, #7757f5);
+            background-size: 300% 300%;
+            animation: backgroundMove 10s infinite alternate ease-in-out;
             margin: 0;
             padding: 0;
-            color: #333333;
+            color: #333;
+            transition: background 0.5s ease;
+        }
+
+        @keyframes backgroundMove {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
         }
 
         .container {
             width: 80%;
             margin: auto;
-            overflow: hidden;
             padding: 20px;
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.9);
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease-in-out;
         }
 
         h1 {
             text-align: center;
-            margin-top: 50px;
+            margin-top: 30px;
             color: #fff;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
@@ -39,68 +47,81 @@
 
         input[type="text"] {
             width: 300px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            padding: 12px;
+            border: 2px solid #ccc;
+            border-radius: 25px;
             margin-right: 10px;
+            transition: all 0.3s ease-in-out;
+            outline: none;
+        }
+
+        input[type="text"]:focus {
+            border-color: #f5576c;
+            box-shadow: 0 0 10px rgba(245, 87, 108, 0.5);
         }
 
         button {
-            padding: 10px;
+            padding: 12px;
             border: none;
-            background-color: #333;
+            background: linear-gradient(45deg, #f093fb, #f5576c);
             color: #fff;
             cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s, transform 0.3s;
+            border-radius: 25px;
+            transition: all 0.3s ease;
         }
 
         button:hover {
-            background-color: #555;
-            transform: scale(1.05);
+            transform: scale(1.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
         #results {
             margin-top: 20px;
         }
 
-        #results div {
+        .news-card {
             background: #fff;
             margin-bottom: 20px;
             padding: 20px;
-            border-radius: 5px;
+            border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: background 0.3s, transform 0.3s;
+            transition: transform 0.3s ease, background 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.5s forwards ease-in-out;
         }
 
-        #results div:hover {
-            background: #fefefe;
+        .news-card:hover {
+            background: #f9f9f9;
             transform: translateY(-5px);
         }
 
-        #results h2 {
-            margin: 0 0 10px;
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .news-card h2 {
+            margin-bottom: 10px;
             color: #f5576c;
         }
 
-        #results p {
-            margin: 0 0 10px;
-        }
-
-        #results a {
+        .news-card a {
             color: #f093fb;
             text-decoration: none;
+            font-weight: bold;
         }
 
-        #results a:hover {
+        .news-card a:hover {
             text-decoration: underline;
         }
 
         nav {
-            background: rgba(0, 0, 0, 0.8);
-            padding: 10px 20px;
-            border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background: rgba(0, 0, 0, 0.9);
+            padding: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
         nav ul {
@@ -118,25 +139,40 @@
             color: #fff;
             text-decoration: none;
             font-weight: bold;
+            position: relative;
             transition: color 0.3s;
         }
 
-        nav ul li a:hover {
-            color: #f093fb;
+        nav ul li a::after {
+            content: '';
+            width: 0%;
+            height: 2px;
+            background: #f093fb;
+            position: absolute;
+            left: 50%;
+            bottom: -5px;
+            transition: all 0.3s ease-in-out;
+            transform: translateX(-50%);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
         }
 
         footer {
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.9);
             color: #fff;
             text-align: center;
-            padding: 10px 20px;
-            border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 12px;
             margin-top: 20px;
         }
 
-        footer p {
-            margin: 0;
+        .loading-spinner {
+            display: none;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: #f5576c;
         }
 
         @media (max-width: 768px) {
@@ -180,11 +216,37 @@
             <input type="text" id="query" placeholder="Enter your search query">
             <button type="submit">Search</button>
         </form>
+        <div class="loading-spinner" id="loading">Loading...</div>
         <div id="results"></div>
     </div>
     <footer>
         <p>&copy; 2025 News App. All rights reserved.</p>
     </footer>
-    <script src="script.js"></script>
+    <script>
+        document.getElementById("search-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const query = document.getElementById("query").value;
+            const resultsContainer = document.getElementById("results");
+            const loading = document.getElementById("loading");
+
+            resultsContainer.innerHTML = "";
+            loading.style.display = "block";
+
+            setTimeout(() => { // Simulating an API call
+                loading.style.display = "none";
+
+                for (let i = 0; i < 5; i++) {
+                    let article = document.createElement("div");
+                    article.className = "news-card";
+                    article.innerHTML = `
+                        <h2>Sample News ${i + 1}</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <a href="#">Read more</a>
+                    `;
+                    resultsContainer.appendChild(article);
+                }
+            }, 1500);
+        });
+    </script>
 </body>
 </html>
