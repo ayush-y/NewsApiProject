@@ -16,4 +16,5 @@ The main goal is to provide users with up-to-date news content in a user-friendl
 
 - HTML, CSS, JavaScript
 - **API**: Public News API (NewsAPI.org)
+- Using News API we will get real time news.
 
