@@ -11,6 +11,7 @@ The main goal is to provide users with up-to-date news content in a user-friendl
 - Display news articles in a clean and organized layout
 - Search functionality to find specific news articles
 - Responsive design for optimal viewing on various devices
+- AQI level
 
 ## Technologies Used
 
