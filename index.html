@@ -4,17 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>News App</title>
-    <link rel="stylesheet" href="style.css">
     <style>
+        :root {
+            --primary-color: #f5576c;
+            --secondary-color: #f093fb;
+            --bg-gradient: linear-gradient(120deg, #93effb, #7757f5);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(120deg, #93effb, #7757f5);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-gradient);
             background-size: 300% 300%;
             animation: backgroundMove 10s infinite alternate ease-in-out;
             margin: 0;
             padding: 0;
             color: #333;
-            transition: background 0.5s ease;
         }
 
         @keyframes backgroundMove {
@@ -22,94 +30,129 @@
             100% { background-position: 100% 50%; }
         }
 
+        nav {
+            background: rgba(0, 0, 0, 0.85);
+            padding: 1rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-color);
+            left: 50%;
+            bottom: -5px;
+            transform: translateX(-50%);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
         .container {
-            width: 80%;
-            margin: auto;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 10px;
+            max-width: 960px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            transition: transform 0.3s ease-in-out;
         }
 
         h1 {
             text-align: center;
-            margin-top: 30px;
             color: #fff;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
         }
 
         form {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
-            margin-top: 20px;
+            margin-top: 1.5rem;
         }
 
         input[type="text"] {
-            width: 300px;
+            flex: 1 1 300px;
             padding: 12px;
             border: 2px solid #ccc;
             border-radius: 25px;
             margin-right: 10px;
-            transition: all 0.3s ease-in-out;
+            transition: 0.3s;
             outline: none;
         }
 
         input[type="text"]:focus {
-            border-color: #f5576c;
-            box-shadow: 0 0 10px rgba(245, 87, 108, 0.5);
+            border-color: var(--primary-color);
+            box-shadow: 0 0 8px rgba(245, 87, 108, 0.5);
         }
 
         button {
-            padding: 12px;
+            padding: 12px 20px;
             border: none;
-            background: linear-gradient(45deg, #f093fb, #f5576c);
-            color: #fff;
-            cursor: pointer;
+            background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+            color: white;
             border-radius: 25px;
-            transition: all 0.3s ease;
+            cursor: pointer;
+            transition: 0.3s;
         }
 
         button:hover {
-            transform: scale(1.1);
+            transform: scale(1.05);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
-        #results {
+        #loading {
+            display: none;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary-color);
             margin-top: 20px;
         }
 
+        #results {
+            margin-top: 30px;
+        }
+
         .news-card {
-            background: #fff;
+            background: white;
             margin-bottom: 20px;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, background 0.3s ease;
-            opacity: 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.6s ease forwards;
             transform: translateY(20px);
-            animation: fadeIn 0.5s forwards ease-in-out;
-        }
-
-        .news-card:hover {
-            background: #f9f9f9;
-            transform: translateY(-5px);
-        }
-
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            opacity: 0;
         }
 
         .news-card h2 {
-            margin-bottom: 10px;
-            color: #f5576c;
+            color: var(--primary-color);
         }
 
         .news-card a {
-            color: #f093fb;
+            color: var(--secondary-color);
             text-decoration: none;
             font-weight: bold;
         }
@@ -118,85 +161,30 @@
             text-decoration: underline;
         }
 
-        nav {
-            background: rgba(0, 0, 0, 0.9);
-            padding: 12px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            padding: 0;
-        }
-
-        nav ul li {
-            margin: 0 15px;
-        }
-
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-            position: relative;
-            transition: color 0.3s;
-        }
-
-        nav ul li a::after {
-            content: '';
-            width: 0%;
-            height: 2px;
-            background: #f093fb;
-            position: absolute;
-            left: 50%;
-            bottom: -5px;
-            transition: all 0.3s ease-in-out;
-            transform: translateX(-50%);
-        }
-
-        nav ul li a:hover::after {
-            width: 100%;
+        @keyframes fadeIn {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         footer {
             background: rgba(0, 0, 0, 0.9);
             color: #fff;
             text-align: center;
-            padding: 12px;
-            margin-top: 20px;
-        }
-
-        .loading-spinner {
-            display: none;
-            text-align: center;
-            font-size: 20px;
-            font-weight: bold;
-            color: #f5576c;
+            padding: 1rem;
+            margin-top: 2rem;
         }
 
         @media (max-width: 768px) {
-            .container {
-                width: 95%;
+            form {
+                flex-direction: column;
+                align-items: center;
             }
 
             input[type="text"] {
                 width: 100%;
                 margin-bottom: 10px;
-            }
-
-            form {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            nav ul li {
-                margin: 10px 0;
             }
         }
     </style>
@@ -210,37 +198,44 @@
             <li><a href="#">Health</a></li>
         </ul>
     </nav>
+
+    <h1>News App</h1>
     <div class="container">
-        <h1>News App</h1>
         <form id="search-form">
-            <input type="text" id="query" placeholder="Enter your search query">
+            <input type="text" id="query" placeholder="Search news here...">
             <button type="submit">Search</button>
         </form>
-        <div class="loading-spinner" id="loading">Loading...</div>
+        <div id="loading">Loading...</div>
         <div id="results"></div>
     </div>
+
     <footer>
         <p>&copy; 2025 News App. All rights reserved.</p>
     </footer>
+
     <script>
-        document.getElementById("search-form").addEventListener("submit", function(event) {
-            event.preventDefault();
-            const query = document.getElementById("query").value;
-            const resultsContainer = document.getElementById("results");
-            const loading = document.getElementById("loading");
+        const form = document.getElementById("search-form");
+        const queryInput = document.getElementById("query");
+        const resultsContainer = document.getElementById("results");
+        const loading = document.getElementById("loading");
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const query = queryInput.value.trim();
+            if (!query) return;
 
             resultsContainer.innerHTML = "";
             loading.style.display = "block";
 
-            setTimeout(() => { // Simulating an API call
+            setTimeout(() => {
                 loading.style.display = "none";
 
-                for (let i = 0; i < 5; i++) {
-                    let article = document.createElement("div");
+                for (let i = 1; i <= 5; i++) {
+                    const article = document.createElement("div");
                     article.className = "news-card";
                     article.innerHTML = `
-                        <h2>Sample News ${i + 1}</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <h2>Sample News ${i}</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at velit quis augue eleifend luctus.</p>
                         <a href="#">Read more</a>
                     `;
                     resultsContainer.appendChild(article);
