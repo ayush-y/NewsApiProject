@@ -12,6 +12,7 @@ The main goal is to provide users with up-to-date news content in a user-friendl
 - Search functionality to find specific news articles
 - Responsive design for optimal viewing on various devices
 - AQI level
+- serch box to search city
 
 
 affa
@@ -20,4 +21,5 @@ affa
 - HTML, CSS, JavaScript
 - **API**: Public News API (NewsAPI.org)
 - Using News API we will get real time news.
+- 
 
