@@ -13,6 +13,7 @@ The main goal is to provide users with up-to-date news content in a user-friendl
 - Responsive design for optimal viewing on various devices
 - AQI level
 - serch box to search city
+- implementation dark mode
 
 
 affa
