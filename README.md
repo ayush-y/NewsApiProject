@@ -14,6 +14,26 @@ The main goal is to provide users with up-to-date news content in a user-friendl
 - AQI level
 - serch box to search city
 - implementation dark mode
+- What’s Improved:
+Modern Design:
+
+Added border-radius to buttons and inputs for smoother edges.
+
+Implemented consistent gradient backgrounds for the app, improving aesthetics.
+
+Responsive Navigation:
+
+Enhanced mobile responsiveness for the navigation menu and form layout.
+
+Added hover effects to navigation links with subtle color transitions.
+
+Interactive Elements:
+
+Results dynamically react with hover effects, including subtle elevation for cards.
+
+Color Scheme:
+
+Optimized color palette with complementary gradients and shadows for a visually striking design.
 
 
 affa
