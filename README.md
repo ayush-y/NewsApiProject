@@ -17,26 +17,24 @@ The main goal is to provide users with up-to-date news content in a user-friendl
 - What’s Improved:
 Modern Design:
 
-Added border-radius to buttons and inputs for smoother edges.
+- Added border-radius to buttons and inputs for smoother edges.
 
-Implemented consistent gradient backgrounds for the app, improving aesthetics.
+- Implemented consistent gradient backgrounds for the app, improving aesthetics.
 
 Responsive Navigation:
 
-Enhanced mobile responsiveness for the navigation menu and form layout.
+- Enhanced mobile responsiveness for the navigation menu and form layout.
 
-Added hover effects to navigation links with subtle color transitions.
+- Added hover effects to navigation links with subtle color transitions.
 
 Interactive Elements:
 
-Results dynamically react with hover effects, including subtle elevation for cards.
+- Results dynamically react with hover effects, including subtle elevation for cards.
 
 Color Scheme:
 
-Optimized color palette with complementary gradients and shadows for a visually striking design.
+ -Optimized color palette with complementary gradients and shadows for a visually striking design.
 
-
-affa
 ## Technologies Used
 
 - HTML, CSS, JavaScript
