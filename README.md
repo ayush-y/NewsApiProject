@@ -40,7 +40,7 @@ Color Scheme:
 - HTML, CSS, JavaScript
 - **API**: Public News API (NewsAPI.org)
 - Using News API we will get real time news.
-- The JavaScript file (script.js) integrates with a news API
+- The JavaScript file (script.js) integrates with a news API from fakemewsAPI
 - e.g., NewsAPI or Bing News Search) to fetch and display articles based on the user’s search query.
 - Real-time data is used to populate the results dynamically.
 
