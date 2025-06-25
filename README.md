@@ -29,7 +29,8 @@ Responsive Navigation:
 
 Interactive Elements:
 
-- Results dynamically react with hover effects, including subtle elevation for cards.
+- Results dynamically react with hover effects,
+- including subtle elevation for cards.
 
 Color Scheme:
 
