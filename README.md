@@ -36,7 +36,7 @@ Color Scheme:
 
  -Optimized color palette with complementary gradients and shadows for a visually striking design.
 
-## Technologies Used
+## Technologies Used in News Project
 
 - HTML, CSS, JavaScript
 - **API**: Public News API (NewsAPI.org)
