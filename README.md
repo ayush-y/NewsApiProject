@@ -19,7 +19,7 @@ Modern Design:
 
 - Added border-radius to buttons and inputs for smoother edges.
 
-- Implemented consistent gradient backgrounds for the app, improving aesthetics.
+- Implemented consistent gradient backgrounds for the app, and improving aesthetics.
 
 Responsive Navigation:
 
