@@ -3,7 +3,8 @@
 ## Overview
 
 Welcome to the NewsApiProject! This project is designed to fetch and display the latest news articles using a public news API. 
-The main goal is to provide users with up-to-date news content in a user-friendly interface.
+The main goal is to provide users with up-to-date news content 
+in a user-friendly interface.
 
 ## Features
 
